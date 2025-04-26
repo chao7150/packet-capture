@@ -1,7 +1,6 @@
-use mac_address::format;
 use pnet::datalink;
 
-mod mac_address;
+mod ethernet;
 
 fn main() {
     use pnet::datalink::Channel::Ethernet;
@@ -26,10 +25,12 @@ fn main() {
             Ok(frame) => {
                 let dest_mac_address = &frame[0..6];
                 let src_mac_address = &frame[6..12];
+                let frame_type = &frame[12..14];
                 println!(
-                    "Destination MAC: {}, Source MAC: {}",
-                    format::byte_array_2_hex(dest_mac_address),
-                    format::byte_array_2_hex(src_mac_address)
+                    "Destination MAC: {}, Source MAC: {}, Frame Type: {}",
+                    ethernet::mac_address::format::byte_array_2_hex(dest_mac_address),
+                    ethernet::mac_address::format::byte_array_2_hex(src_mac_address),
+                    ethernet::r#type::format::from_byte_array(frame_type),
                 )
             }
             Err(_) => return,
