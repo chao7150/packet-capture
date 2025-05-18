@@ -11,6 +11,12 @@ pub struct Header {
     pub protocol: Protocol,
 }
 
+impl Header {
+    pub fn is_last_fragment(&self) -> bool {
+        self.dont_fragment || !self.more_fragment
+    }
+}
+
 #[derive(Debug)]
 pub enum Protocol {
     TCP,
