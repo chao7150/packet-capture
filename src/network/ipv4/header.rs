@@ -6,8 +6,11 @@ pub struct Header {
     pub dont_fragment: bool,
     pub more_fragment: bool,
     pub fragment_offset: u16,
+    #[allow(dead_code)]
     pub source_ip: IpAddr,
+    #[allow(dead_code)]
     pub destination_ip: IpAddr,
+    #[allow(dead_code)]
     pub protocol: Protocol,
 }
 
@@ -19,7 +22,7 @@ impl Header {
 
 #[derive(Debug)]
 pub enum Protocol {
-    TCP,
-    UDP,
+    Tcp,
+    Udp,
     Others,
 }

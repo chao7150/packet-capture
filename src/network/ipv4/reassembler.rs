@@ -38,7 +38,7 @@ impl Assorter {
         if reassembler.has_all_neccessary_fragments() {
             if let Some(reassembler) = reassembler.reassemble() {
                 self.store.remove(&header.id);
-                return Some((header, reassembler));
+                Some((header, reassembler))
             } else {
                 panic!("Reassembler lost");
             }
@@ -83,7 +83,7 @@ impl Reassembler {
         for (_, fragment) in fragments {
             result.extend_from_slice(fragment);
         }
-        return Some(result);
+        Some(result)
     }
 }
 

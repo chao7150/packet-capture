@@ -5,7 +5,7 @@ pub fn from_byte_array(bytes: &[u8]) -> Type {
 
     match type_value {
         0x0800 => Type::IPv4,
-        0x0806 => Type::ARP,
+        0x0806 => Type::Arp,
         0x86DD => Type::IPv6,
         _ => Type::Others,
     }
@@ -20,7 +20,7 @@ mod tests {
         let bytes = [0x08, 0x00];
         assert_eq!(from_byte_array(&bytes), Type::IPv4);
         let bytes_arp = [0x08, 0x06];
-        assert_eq!(from_byte_array(&bytes_arp), Type::ARP);
+        assert_eq!(from_byte_array(&bytes_arp), Type::Arp);
         let bytes_ipv6 = [0x86, 0xDD];
         assert_eq!(from_byte_array(&bytes_ipv6), Type::IPv6);
     }

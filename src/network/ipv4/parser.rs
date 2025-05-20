@@ -19,8 +19,8 @@ pub fn parse(payload: &[u8]) -> (Header, &[u8]) {
 
 fn parse_protocol(payload: &u8) -> Protocol {
     match payload {
-        6 => Protocol::TCP,
-        17 => Protocol::UDP,
+        6 => Protocol::Tcp,
+        17 => Protocol::Udp,
         _ => Protocol::Others,
     }
 }

@@ -4,7 +4,7 @@ use std::fmt;
 pub enum Type {
     IPv4,
     IPv6,
-    ARP,
+    Arp,
     Others,
 }
 
@@ -13,7 +13,7 @@ impl fmt::Display for Type {
         match self {
             Type::IPv4 => write!(f, "IPv4"),
             Type::IPv6 => write!(f, "IPv6"),
-            Type::ARP => write!(f, "ARP"),
+            Type::Arp => write!(f, "ARP"),
             Type::Others => write!(f, "Other Protocol"),
         }
     }
